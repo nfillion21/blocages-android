@@ -1,15 +1,14 @@
 package pgm.poolp.blocages.viewmodels
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import pgm.poolp.blocages.game.builders.GameFactory
 import pgm.poolp.blocages.game.interfaces.Player
+import pgm.poolp.blocages.game.utils.Dice
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,15 +21,15 @@ class BlocagesViewModel @Inject internal constructor() : ViewModel()
         _isLoading.value = value
     }
 
-    fun blocages(gameFactory: GameFactory): Flow<Player> = flow {
-
-        val players = mutableListOf<Player>()
+    fun playersFlow(gameFactory: GameFactory): Flow<Player> = flow {
         for (i in 0 until 100_000) {
-            players.add(gameFactory.randomPlayer())
+            emit(gameFactory.randomPlayer())
         }
+    }
 
-        players.forEach { player ->
-            emit(player)
+    fun diceFlow(): Flow<Dice> = flow {
+        for (i in 0 until 100_000) {
+            emit(Dice.values().random())
         }
     }
 }

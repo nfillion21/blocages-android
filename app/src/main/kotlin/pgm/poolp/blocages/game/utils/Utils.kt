@@ -53,3 +53,12 @@ enum class Jobs (val description: String) {
     BLACK_ORC_BLOCKER("Black orc blocker"),
     GUTTER_RUNNER("Gutter runner")
 }
+
+enum class Dice (val description: String) {
+    KERRUNCH("Kerrunch!"),
+    SHOVE_1("Shove 1"),
+    SHOVE_2("Shove 2"),
+    TACLE("Tacle"),
+    SMASH("Smash"),
+    MISS("Miss"),
+}
