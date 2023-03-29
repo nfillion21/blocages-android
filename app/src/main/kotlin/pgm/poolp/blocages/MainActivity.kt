@@ -4,16 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
-import androidx.compose.material.primarySurface
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
@@ -61,7 +56,6 @@ class MainActivity : ComponentActivity() {
 
     private fun increaseByTen() {
 
-        //val mutableDicesList = mutableListOf<Dice>()
         var kerrunchCount = 0
         var missCount = 0
         var shoveOneCount = 0
@@ -87,6 +81,24 @@ class MainActivity : ComponentActivity() {
                 }
                 .onCompletion {
                     // button switch to start
+                    // once everything is set
+
+                    val kerrunchPercent = kerrunchCount.toFloat().div(100_000f).times(100f)
+                    val missPercent = missCount.toFloat().div(100_000f).times(100f)
+                    val shoveOnePercent = shoveOneCount.toFloat().div(100_000f).times(100f)
+                    val shoveTwoPercent = shoveTwoCount.toFloat().div(100_000f).times(100f)
+                    val taclePercent = tacleCount.toFloat().div(100_000f).times(100f)
+                    val smashCountPercent = smashCount.toFloat().div(100_000f).times(100f)
+
+                    val results = mapOf(
+                        kerrunchPercent to "Kerrunch",
+                        missPercent to "Miss",
+                        shoveOnePercent to "ShoveOne",
+                        shoveTwoPercent to "ShoveTwo",
+                        taclePercent to "Tacle",
+                        smashCountPercent to "Smash"
+                    )
+                    val k = "hello World"
                 }
                 .collect {
                     //mutableDicesList.add(it)
