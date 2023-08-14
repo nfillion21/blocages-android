@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -79,11 +81,15 @@ dependencies {
     debugImplementation (Dependencies.composeUiTestManifest)
 
     implementation (Dependencies.hiltAndroid)
-    //implementation (Dependencies.hiltAndroidCompiler)
+    kapt(Dependencies.hiltAndroidCompiler)
     implementation (Dependencies.hiltNavigationCompose)
+    implementation (Dependencies.navigationCompose)
 
     implementation (Dependencies.pagingCompose)
     implementation (Dependencies.coilCompose)
+}
 
-
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

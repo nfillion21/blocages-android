@@ -29,6 +29,7 @@ object Dependencies {
     val hiltAndroidCompiler by lazy { "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}" }
 
     val hiltNavigationCompose by lazy {"androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigationComposeVersion}"}
+    val navigationCompose by lazy {"androidx.navigation:navigation-compose:${Versions.navigationComposeVersion}"}
 
     // Paging compose
     val pagingCompose by lazy { "androidx.paging:paging-compose:${Versions.pagingCompose}" }

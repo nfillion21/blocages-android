@@ -12,13 +12,16 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import pgm.poolp.blocages.game.utils.Dice
+import pgm.poolp.blocages.navigation.JetsurveyNavHost
 import pgm.poolp.blocages.ui.theme.BlocagesTheme
 import pgm.poolp.blocages.viewmodels.BlocagesViewModel
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var blocagesViewModel: BlocagesViewModel
@@ -29,7 +32,9 @@ class MainActivity : ComponentActivity() {
             blocagesViewModel = hiltViewModel()
 
             BlocagesTheme {
+                JetsurveyNavHost()
                 // A surface container using the 'background' color from the theme
+                /*
                 Scaffold(
                     floatingActionButton = {
                         androidx.compose.material.ExtendedFloatingActionButton(
@@ -41,6 +46,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Greeting(blocagesViewModel = blocagesViewModel)
                 }
+                */
                 /*
                 Surface(
                     modifier = Modifier.fillMaxSize(),

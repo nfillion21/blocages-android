@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Blocages</string>
+    <string name="app_tagline">Better surveys with Jetpack Compose</string>
+    <string name="sign_in_guest">Sign in as guest</string>
 </resources>
