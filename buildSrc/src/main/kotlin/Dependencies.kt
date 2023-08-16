@@ -12,6 +12,8 @@ object Dependencies {
     val composeMaterial3 by lazy {"androidx.compose.material3:material3:${Versions.composeMaterial3}"}
 
     val composeMaterial by lazy {"androidx.compose.material:material:${Versions.composeMaterial}"}
+    val composeAnimation by lazy {"androidx.compose.animation:animation:${Versions.composeAnimation}"}
+
     val constraintLayout by lazy {"androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayout}"}
 
     val lifecycleViewModelCompose by lazy {"androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.lifecycleAndroidX}"}

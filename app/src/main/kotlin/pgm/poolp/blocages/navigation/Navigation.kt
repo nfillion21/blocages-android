@@ -1,15 +1,15 @@
 package pgm.poolp.blocages.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import pgm.poolp.blocages.navigation.Destinations.SURVEY_RESULTS_ROUTE
 import pgm.poolp.blocages.navigation.Destinations.SURVEY_ROUTE
 import pgm.poolp.blocages.navigation.Destinations.WELCOME_ROUTE
-import pgm.poolp.blocages.viewmodels.BlocagesViewModel
-import pgm.poolp.blocages.viewmodels.WelcomeViewModel
+import pgm.poolp.blocages.survey.SurveyResultScreen
+import pgm.poolp.blocages.survey.SurveyRoute
 import pgm.poolp.blocages.welcome.WelcomeRoute
 
 object Destinations {
@@ -34,7 +34,6 @@ fun JetsurveyNavHost(
             )
         }
 
-        /*
         composable(SURVEY_ROUTE) {
             SurveyRoute(
                 onSurveyComplete = {
@@ -49,6 +48,5 @@ fun JetsurveyNavHost(
                 navController.popBackStack(WELCOME_ROUTE, false)
             }
         }
-        */
     }
 }

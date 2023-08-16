@@ -2,4 +2,30 @@
     <string name="app_name">Blocages</string>
     <string name="app_tagline">Better surveys with Jetpack Compose</string>
     <string name="sign_in_guest">Sign in as guest</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="done">Done</string>
+    <string name="close">Close</string>
+    <string name="survey_result_title">Compose</string>
+    <string name="survey_result_subtitle">Congratulations, you are Compose</string>
+    <string name="survey_result_description">You are a curious developer, always willing to try
+        something new. You want to stay up to date with the trends to Compose is your middle name.</string>
+
+    <!-- survey-->
+    <string name="select_all">Select all that apply.</string>
+    <string name="question_count">\u00A0of %d</string>
+    <string name="select_one">Select one.</string>
+
+    <string name="in_my_free_time">In my free time I like to …</string>
+    <string name="read">Read</string>
+    <string name="work_out">Work out</string>
+    <string name="draw">Draw</string>
+    <string name="play_games">Play video games</string>
+    <string name="dance">Dance</string>
+    <string name="watch_movies">Watch movies</string>
+
+    <string name="selfies">How do you feel about selfies 🤳?</string>
+    <string name="strongly_dislike">Strongly\nDislike</string>
+    <string name="strongly_like">Strongly\nLike</string>
+    <string name="neutral">Neutral</string>
 </resources>
