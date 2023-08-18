@@ -15,7 +15,7 @@ import pgm.poolp.blocages.welcome.WelcomeRoute
 object Destinations {
     const val WELCOME_ROUTE = "welcome"
     const val SURVEY_ROUTE = "survey"
-    const val SURVEY_RESULTS_ROUTE = "surveyresults"
+    const val SURVEY_RESULTS_ROUTE = "surveyresults/{dice}"
 }
 
 @Composable
@@ -37,13 +37,14 @@ fun JetsurveyNavHost(
         composable(SURVEY_ROUTE) {
             SurveyRoute(
                 onSurveyComplete = {
-                    navController.navigate(SURVEY_RESULTS_ROUTE)
+                    navController.navigate("surveyresults/$it")
                 },
                 onNavUp = navController::navigateUp,
             )
         }
 
         composable(SURVEY_RESULTS_ROUTE) {
+            val diceStr = it.arguments?.getString("dice")
             SurveyResultScreen {
                 navController.popBackStack(WELCOME_ROUTE, false)
             }

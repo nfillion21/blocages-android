@@ -20,10 +20,9 @@ private const val CONTENT_ANIMATION_DURATION = 300
 /**
  * Displays a [SurveyQuestionsScreen] tied to the passed [SurveyViewModel]
  */
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun SurveyRoute(
-    onSurveyComplete: () -> Unit,
+    onSurveyComplete: (dice:Int) -> Unit,
     onNavUp: () -> Unit,
 ) {
     val viewModel: SurveyViewModel = hiltViewModel()
@@ -78,6 +77,12 @@ fun SurveyRoute(
                         modifier = modifier,
                     )
                 }
+
+                SurveyQuestion.NUMBER_OF_DICE -> NumberOfDiceQuestion(
+                    selectedAnswer = viewModel.numberOfDiceResponse,
+                    onOptionSelected = viewModel::onNumberOfDiceResponse,
+                    modifier = modifier,
+                )
 
                 SurveyQuestion.FEELING_ABOUT_SELFIES ->
                     FeelingAboutSelfiesQuestion(

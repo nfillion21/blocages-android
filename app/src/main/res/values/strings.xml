@@ -16,6 +16,11 @@
     <string name="question_count">\u00A0of %d</string>
     <string name="select_one">Select one.</string>
 
+    <string name="pick_a_number_of_block_dice">Pick a number of block dice</string>
+    <string name="one_dice">1 block dice</string>
+    <string name="two_dices">2 block dices</string>
+    <string name="three_dices">3 block dices</string>
+
     <string name="in_my_free_time">In my free time I like to …</string>
     <string name="read">Read</string>
     <string name="work_out">Work out</string>
@@ -28,4 +33,5 @@
     <string name="strongly_dislike">Strongly\nDislike</string>
     <string name="strongly_like">Strongly\nLike</string>
     <string name="neutral">Neutral</string>
+
 </resources>
