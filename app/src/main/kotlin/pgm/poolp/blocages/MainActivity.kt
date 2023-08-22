@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -60,6 +59,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /*
     private fun increaseByTen() {
 
         var kerrunchCount = 0
@@ -81,7 +81,7 @@ class MainActivity : ComponentActivity() {
                         Dice.MISS -> missCount++
                         Dice.SHOVE_1 -> shoveOneCount++
                         Dice.SHOVE_2 -> shoveTwoCount++
-                        Dice.TACLE -> tacleCount++
+                        Dice.TACKLE -> tacleCount++
                         Dice.SMASH -> smashCount++
                     }
                 }
@@ -112,8 +112,10 @@ class MainActivity : ComponentActivity() {
                 }
         }
     }
+     */
 }
 
+/*
 @Composable
 fun Greeting(blocagesViewModel: BlocagesViewModel) {
 
@@ -146,7 +148,7 @@ fun Greeting(blocagesViewModel: BlocagesViewModel) {
                             Dice.MISS -> missCount++
                             Dice.SHOVE_1 -> shoveOneCount++
                             Dice.SHOVE_2 -> shoveTwoCount++
-                            Dice.TACLE -> tacleCount++
+                            Dice.TACKLE -> tacleCount++
                             Dice.SMASH -> smashCount++
                         }
                     }
@@ -163,6 +165,7 @@ fun Greeting(blocagesViewModel: BlocagesViewModel) {
         }
     ) { }
 }
+*/
 
 @Preview(showBackground = true)
 @Composable

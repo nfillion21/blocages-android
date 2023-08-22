@@ -58,7 +58,7 @@ enum class Dice (val description: String) {
     KERRUNCH("Kerrunch!"),
     SHOVE_1("Shove 1"),
     SHOVE_2("Shove 2"),
-    TACLE("Tacle"),
+    TACKLE("Tackle"),
     SMASH("Smash"),
     MISS("Miss"),
 }

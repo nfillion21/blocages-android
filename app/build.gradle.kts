@@ -69,6 +69,7 @@ dependencies {
     implementation (Dependencies.constraintLayout)
 
     implementation (Dependencies.lifecycleViewModelCompose)
+    implementation (Dependencies.lifecycleRuntimeCompose)
 
     testImplementation (Dependencies.junit)
 

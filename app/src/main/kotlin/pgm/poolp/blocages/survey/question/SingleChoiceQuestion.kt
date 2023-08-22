@@ -37,16 +37,49 @@ import pgm.poolp.blocages.survey.QuestionWrapper
 fun SingleChoiceQuestion(
     @StringRes titleResourceId: Int,
     @StringRes directionsResourceId: Int,
-    possibleAnswers: List<NumberOfDice>,
+    stateDices : Map<String, Float>?,
+    possibleAnswers: List<RowQuestion>,
     selectedAnswer: Int?,
     onOptionSelected: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    stateDices?.let { stateDices ->
+        QuestionWrapper(
+            titleResourceId = titleResourceId,
+            directionsResourceId = directionsResourceId,
+            modifier = modifier.selectableGroup())
+        {
+            possibleAnswers.forEachIndexed { index, numberOfDice ->
+                val selected = index+1 == selectedAnswer
+
+                var text = stringResource(id = numberOfDice.stringResourceId)
+                text += " - "
+                text += when (index) {
+                    0 -> stateDices["Miss"]
+                    1 -> stateDices["Tackle"]
+                    2 -> stateDices["ShoveOne"]
+                    3 -> stateDices["Tackle"]
+                    4 -> stateDices["Smash"]
+                    5 -> stateDices["Kerrunch"]
+                    else -> {}
+                }
+
+                RadioButtonWithImageRow(
+                    modifier = Modifier.padding(vertical = 8.dp),
+                    text = text,
+                    imageResourceId = numberOfDice.imageResourceId,
+                    selected = selected,
+                    onOptionSelected = { onOptionSelected(index+1) }
+                )
+            }
+        }
+    } ?:
     QuestionWrapper(
         titleResourceId = titleResourceId,
         directionsResourceId = directionsResourceId,
         modifier = modifier.selectableGroup(),
-    ) {
+
+        ) {
         possibleAnswers.forEachIndexed { index, numberOfDice ->
             val selected = index+1 == selectedAnswer
             RadioButtonWithImageRow(
@@ -119,9 +152,9 @@ fun RadioButtonWithImageRow(
 @Composable
 fun SingleChoiceQuestionPreview() {
     val possibleAnswers = listOf(
-        NumberOfDice(R.string.one_dice, R.drawable.dice_48px),
-        NumberOfDice(R.string.two_dices, R.drawable.dice_48px),
-        NumberOfDice(R.string.three_dices, R.drawable.dice_48px),
+        RowQuestion(R.string.one_dice, R.drawable.dice_48px),
+        RowQuestion(R.string.two_dices, R.drawable.dice_48px),
+        RowQuestion(R.string.three_dices, R.drawable.dice_48px),
     )
     var selectedAnswer by remember { mutableStateOf<Int?>(null) }
 
@@ -130,8 +163,9 @@ fun SingleChoiceQuestionPreview() {
         directionsResourceId = R.string.select_one,
         possibleAnswers = possibleAnswers,
         selectedAnswer = selectedAnswer,
+        stateDices = null,
         onOptionSelected = { selectedAnswer = it },
     )
 }
 
-data class NumberOfDice(@StringRes val stringResourceId: Int, @DrawableRes val imageResourceId: Int)
+data class RowQuestion(@StringRes val stringResourceId: Int, @DrawableRes val imageResourceId: Int)

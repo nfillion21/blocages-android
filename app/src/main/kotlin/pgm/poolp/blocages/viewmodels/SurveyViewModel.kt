@@ -1,18 +1,16 @@
 package pgm.poolp.blocages.viewmodels
 
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import pgm.poolp.blocages.survey.question.NumberOfDice
 import javax.inject.Inject
 
 @HiltViewModel
 class SurveyViewModel @Inject internal constructor() : ViewModel() {
 
     private val questionOrder: List<SurveyQuestion> = listOf(
-        SurveyQuestion.FREE_TIME,
         SurveyQuestion.NUMBER_OF_DICE,
+        SurveyQuestion.DICE_RESULT,
         SurveyQuestion.FEELING_ABOUT_SELFIES
     )
 
@@ -20,13 +18,13 @@ class SurveyViewModel @Inject internal constructor() : ViewModel() {
 
     // ----- Responses exposed as State -----
 
-    private val _freeTimeResponse = mutableStateListOf<Int>()
-    val freeTimeResponse: List<Int>
-        get() = _freeTimeResponse
-
     private val _numberOfDiceResponse = mutableStateOf<Int?>(null)
     val numberOfDiceResponse: Int?
         get() = _numberOfDiceResponse.value
+
+    private val _diceResultResponse = mutableStateOf<Int?>(null)
+    val diceResultResponse: Int?
+        get() = _diceResultResponse.value
 
     private val _feelingAboutSelfiesResponse = mutableStateOf<Float?>(null)
     val feelingAboutSelfiesResponse: Float?
@@ -75,12 +73,13 @@ class SurveyViewModel @Inject internal constructor() : ViewModel() {
         onSurveyComplete(numberOfDiceResponse!!)
     }
 
-    fun onFreeTimeResponse(selected: Boolean, answer: Int) {
-        if (selected) {
-            _freeTimeResponse.add(answer)
-        } else {
-            _freeTimeResponse.remove(answer)
-        }
+    fun onNumberOfDiceResponse(numberOfDice: Int) {
+        _numberOfDiceResponse.value = numberOfDice
+        _isNextEnabled.value = getIsNextEnabled()
+    }
+
+    fun onDiceResultResponse(diceResult: Int) {
+        _diceResultResponse.value = diceResult
         _isNextEnabled.value = getIsNextEnabled()
     }
 
@@ -89,15 +88,10 @@ class SurveyViewModel @Inject internal constructor() : ViewModel() {
         _isNextEnabled.value = getIsNextEnabled()
     }
 
-    fun onNumberOfDiceResponse(numberOfDice: Int) {
-        _numberOfDiceResponse.value = numberOfDice
-        _isNextEnabled.value = getIsNextEnabled()
-    }
-
     private fun getIsNextEnabled(): Boolean {
         return when (questionOrder[questionIndex]) {
-            SurveyQuestion.FREE_TIME -> _freeTimeResponse.isNotEmpty()
             SurveyQuestion.NUMBER_OF_DICE -> _numberOfDiceResponse.value != null
+            SurveyQuestion.DICE_RESULT -> _diceResultResponse.value != null
             SurveyQuestion.FEELING_ABOUT_SELFIES -> _feelingAboutSelfiesResponse.value != null
         }
     }
@@ -114,8 +108,8 @@ class SurveyViewModel @Inject internal constructor() : ViewModel() {
 }
 
 enum class SurveyQuestion {
-    FREE_TIME,
     NUMBER_OF_DICE,
+    DICE_RESULT,
     FEELING_ABOUT_SELFIES
 }
 

@@ -21,6 +21,13 @@
     <string name="two_dices">2 block dices</string>
     <string name="three_dices">3 block dices</string>
 
+    <string name="pick_a_block_dice_result">Pick a block dice result</string>
+    <string name="miss_dice_result">Miss</string>
+    <string name="tackle_dice_result">Tackle</string>
+    <string name="shove_dice_result">Shove</string>
+    <string name="smash_dice_result">Smash</string>
+    <string name="kerrunch_dice_result">Kerrunch!</string>
+
     <string name="in_my_free_time">In my free time I like to …</string>
     <string name="read">Read</string>
     <string name="work_out">Work out</string>

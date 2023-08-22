@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
 import androidx.hilt.navigation.compose.hiltViewModel
+import pgm.poolp.blocages.viewmodels.BlocagesViewModel
 import pgm.poolp.blocages.viewmodels.SurveyQuestion
 import pgm.poolp.blocages.viewmodels.SurveyViewModel
 
@@ -26,6 +27,7 @@ fun SurveyRoute(
     onNavUp: () -> Unit,
 ) {
     val viewModel: SurveyViewModel = hiltViewModel()
+    val blocagesViewModel: BlocagesViewModel = hiltViewModel()
 
     val surveyScreenData = viewModel.surveyScreenData
 
@@ -70,17 +72,16 @@ fun SurveyRoute(
         ) { targetState ->
 
             when (targetState.surveyQuestion) {
-                SurveyQuestion.FREE_TIME -> {
-                    FreeTimeQuestion(
-                        selectedAnswers = viewModel.freeTimeResponse,
-                        onOptionSelected = viewModel::onFreeTimeResponse,
-                        modifier = modifier,
-                    )
-                }
-
                 SurveyQuestion.NUMBER_OF_DICE -> NumberOfDiceQuestion(
                     selectedAnswer = viewModel.numberOfDiceResponse,
                     onOptionSelected = viewModel::onNumberOfDiceResponse,
+                    modifier = modifier,
+                )
+
+                SurveyQuestion.DICE_RESULT -> DiceResultQuestion(
+                    selectedAnswer = viewModel.diceResultResponse,
+                    onOptionSelected = viewModel::onDiceResultResponse,
+                    blocagesViewModel = blocagesViewModel,
                     modifier = modifier,
                 )
 
