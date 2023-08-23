@@ -1,34 +1,24 @@
 package pgm.poolp.blocages
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
-import pgm.poolp.blocages.game.utils.Dice
 import pgm.poolp.blocages.navigation.JetsurveyNavHost
 import pgm.poolp.blocages.ui.theme.BlocagesTheme
-import pgm.poolp.blocages.viewmodels.BlocagesViewModel
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private lateinit var blocagesViewModel: BlocagesViewModel
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            blocagesViewModel = hiltViewModel()
 
             BlocagesTheme {
                 JetsurveyNavHost()

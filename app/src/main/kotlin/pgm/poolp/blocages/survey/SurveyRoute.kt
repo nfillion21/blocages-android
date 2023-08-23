@@ -3,16 +3,16 @@ package pgm.poolp.blocages.survey
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
 import androidx.hilt.navigation.compose.hiltViewModel
-import pgm.poolp.blocages.viewmodels.BlocagesViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import pgm.poolp.blocages.viewmodels.SurveyQuestion
 import pgm.poolp.blocages.viewmodels.SurveyViewModel
 
@@ -27,8 +27,7 @@ fun SurveyRoute(
     onNavUp: () -> Unit,
 ) {
     val viewModel: SurveyViewModel = hiltViewModel()
-    val blocagesViewModel: BlocagesViewModel = hiltViewModel()
-
+    val dices by viewModel.dicesFlow.collectAsStateWithLifecycle(initialValue = mapOf())
     val surveyScreenData = viewModel.surveyScreenData
 
     BackHandler {
@@ -81,16 +80,9 @@ fun SurveyRoute(
                 SurveyQuestion.DICE_RESULT -> DiceResultQuestion(
                     selectedAnswer = viewModel.diceResultResponse,
                     onOptionSelected = viewModel::onDiceResultResponse,
-                    blocagesViewModel = blocagesViewModel,
+                    dices = dices,
                     modifier = modifier,
                 )
-
-                SurveyQuestion.FEELING_ABOUT_SELFIES ->
-                    FeelingAboutSelfiesQuestion(
-                        value = viewModel.feelingAboutSelfiesResponse,
-                        onValueChange = viewModel::onFeelingAboutSelfiesResponse,
-                        modifier = modifier,
-                    )
             }
         }
     }

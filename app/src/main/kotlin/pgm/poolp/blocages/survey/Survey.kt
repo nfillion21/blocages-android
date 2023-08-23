@@ -1,14 +1,11 @@
 package pgm.poolp.blocages.survey
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import pgm.poolp.blocages.R
 import pgm.poolp.blocages.survey.question.RowQuestion
 import pgm.poolp.blocages.survey.question.SingleChoiceQuestion
 import pgm.poolp.blocages.survey.question.SliderQuestion
-import pgm.poolp.blocages.viewmodels.BlocagesViewModel
 
 @Composable
 fun NumberOfDiceQuestion(
@@ -35,15 +32,13 @@ fun NumberOfDiceQuestion(
 fun DiceResultQuestion(
     selectedAnswer: Int?,
     onOptionSelected: (Int) -> Unit,
-    blocagesViewModel: BlocagesViewModel,
+    dices: Map<String, Float>,
     modifier: Modifier = Modifier,
 ) {
-    val stateDices by blocagesViewModel.dicesFlow.collectAsStateWithLifecycle()
-
     SingleChoiceQuestion(
         titleResourceId = R.string.pick_a_block_dice_result,
         directionsResourceId = R.string.select_one,
-        stateDices = stateDices,
+        stateDices = dices,
         possibleAnswers = listOf(
             RowQuestion(R.string.miss_dice_result, R.drawable.miss_48px),
             RowQuestion(R.string.tackle_dice_result, R.drawable.tackle_48px),
@@ -53,23 +48,6 @@ fun DiceResultQuestion(
         ),
         selectedAnswer = selectedAnswer,
         onOptionSelected = onOptionSelected,
-        modifier = modifier,
-    )
-}
-
-@Composable
-fun FeelingAboutSelfiesQuestion(
-    value: Float?,
-    onValueChange: (Float) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    SliderQuestion(
-        titleResourceId = R.string.selfies,
-        value = value,
-        onValueChange = onValueChange,
-        startTextResource = R.string.strongly_dislike,
-        neutralTextResource = R.string.neutral,
-        endTextResource = R.string.strongly_like,
         modifier = modifier,
     )
 }
