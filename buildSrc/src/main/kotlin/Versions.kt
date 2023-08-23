@@ -3,6 +3,7 @@ object Versions {
     const val lifecycleAndroidX = "2.6.1"
     const val activityCompose = "1.3.1"
     const val compose = "1.2.1"
+    const val material = "1.9.0"
     const val composeMaterial3 = "1.0.1"
     const val composeMaterial = "1.2.1"
     const val composeAnimation = "1.5.0"

@@ -7,6 +7,8 @@ object Dependencies {
     val activityCompose by lazy {"androidx.activity:activity-compose:${Versions.activityCompose}"}
     val composeUi by lazy {"androidx.compose.ui:ui:${Versions.compose}"}
 
+    val material by lazy {"com.google.android.material:material:${Versions.material}"}
+
     val iconsExtended by lazy {"androidx.compose.material:material-icons-extended:${Versions.compose}"}
     val composeUiToolingPreview by lazy {"androidx.compose.ui:ui-tooling-preview:${Versions.compose}"}
     val composeMaterial3 by lazy {"androidx.compose.material3:material3:${Versions.composeMaterial3}"}

@@ -1,15 +1,14 @@
 <resources>
     <string name="app_name">Blocages</string>
-    <string name="app_tagline">Better surveys with Jetpack Compose</string>
-    <string name="sign_in_guest">Sign in as guest</string>
+    <string name="app_tagline">Better blocages with Jetpack Compose</string>
+    <string name="start_blocages">Start blocages</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="done">Done</string>
     <string name="close">Close</string>
-    <string name="survey_result_title">Compose</string>
-    <string name="survey_result_subtitle">Congratulations, you are Compose</string>
-    <string name="survey_result_description">You are a curious developer, always willing to try
-        something new. You want to stay up to date with the trends to Compose is your middle name.</string>
+    <string name="survey_result_title">Blocker</string>
+    <string name="survey_result_subtitle">Congratulations, you are a blocker</string>
+    <string name="survey_result_description">When a player makes a Block action, their coach picks an adjacent Marker opponent (the target) and rolls a number of block dice equal to their player\'s Block value.\n\nThe symbol rolled determines the result of the Block action. If rolling more than one block dice, the coach making the roll chooses any one result from those rolled to apply.</string>
 
     <!-- survey-->
     <string name="select_all">Select all that apply.</string>

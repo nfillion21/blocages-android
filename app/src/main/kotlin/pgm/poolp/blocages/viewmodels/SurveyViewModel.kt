@@ -111,7 +111,7 @@ class SurveyViewModel @Inject internal constructor() : ViewModel() {
     private var results = mutableStateMapOf<String, Float>()
     val dicesFlow: Flow<Map<String, Float>>
             = flow {
-        val count = 1_000
+        val count = 10_000
         var kerrunchCount = 0
         var missCount = 0
         var shoveCount = 0

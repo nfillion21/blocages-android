@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -134,6 +135,7 @@ fun RadioButtonWithImageRow(
         ) {
             Image(
                 painter = painterResource(id = imageResourceId),
+                colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary),
                 contentDescription = null,
                 modifier = Modifier
                     .size(56.dp)

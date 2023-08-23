@@ -65,6 +65,7 @@ dependencies {
     implementation (Dependencies.composeMaterial3)
     implementation (Dependencies.composeMaterial)
     implementation (Dependencies.composeAnimation)
+    implementation (Dependencies.material)
 
     implementation (Dependencies.constraintLayout)
 
