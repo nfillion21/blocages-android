@@ -1,5 +1,6 @@
 package pgm.poolp.blocages.viewmodels
 
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
+import okhttp3.internal.toImmutableMap
 import pgm.poolp.blocages.game.builders.GameFactory
 import pgm.poolp.blocages.game.interfaces.Player
 import pgm.poolp.blocages.game.utils.Dice
@@ -35,23 +37,13 @@ class BlocagesViewModel @Inject internal constructor() : ViewModel()
     private val _dices = MutableStateFlow(mapOf<String, Float>())
     val dices: StateFlow<Map<String, Float>> = _dices
 
-    private var secondsCounter = 0
-    val secondsPassed = flow {
-        while (true) {
-            delay(1000)
-            secondsCounter += 1
-            emit(secondsCounter)
-        }
-    }.stateIn(viewModelScope,SharingStarted.Lazily,0)
-
+    private var results = mutableStateMapOf<String, Float>()
     val dicesFlow = flow<Map<String, Float>> {
 
-        val count = 1_000_000
-        val results = mutableMapOf<String, Float>()
+        val count = 1_000
         var kerrunchCount = 0
         var missCount = 0
-        var shoveOneCount = 0
-        var shoveTwoCount = 0
+        var shoveCount = 0
         var tackleCount = 0
         var smashCount = 0
 
@@ -62,36 +54,32 @@ class BlocagesViewModel @Inject internal constructor() : ViewModel()
             when (Dice.values().random())  {
                 Dice.KERRUNCH -> {
                     kerrunchCount++
-                    //results["Kerrunch"] = kerrunchCount.toFloat().div(count).times(100f)
-                    results["Kerrunch"] = kerrunchCount.toFloat()
+                    results["Kerrunch"] = kerrunchCount.toFloat().div(count).times(100f)
                 }
                 Dice.MISS -> {
                     missCount++
-                    //results["Miss"] = missCount.toFloat().div(count).times(100f)
-                    results["Miss"] = missCount.toFloat()
+                    results["Miss"] = missCount.toFloat().div(count).times(100f)
                 }
                 Dice.SHOVE_1 -> {
-                    shoveOneCount++
-                    //results["ShoveOne"] = shoveOneCount.toFloat().div(count).times(100f)
-                    results["ShoveOne"] = shoveOneCount.toFloat()
+                    shoveCount++
+                    results["ShoveOne"] = shoveCount.toFloat().div(count).times(100f)
                 }
                 Dice.SHOVE_2 -> {
-                    shoveTwoCount++
-                    //results["ShoveTwo"] = shoveTwoCount.toFloat().div(count).times(100f)
-                    results["ShoveTwo"] = shoveTwoCount.toFloat()
+                    shoveCount++
+                    results["ShoveTwo"] = shoveCount.toFloat().div(count).times(100f)
                 }
                 Dice.TACKLE -> {
                     tackleCount++
-                    //results["Tackle"] = tackleCount.toFloat().div(count).times(100f)
-                    results["Tackle"] = tackleCount.toFloat()
+                    results["Tackle"] = tackleCount.toFloat().div(count).times(100f)
                 }
                 Dice.SMASH -> {
                     smashCount++
-                    //results["Smash"] = smashCount.toFloat().div(count).times(100f)
-                    results["Smash"] = smashCount.toFloat()
+                    results["Smash"] = smashCount.toFloat().div(count).times(100f)
                 }
             }
+
             emit(results)
+            //_dices.value = results
         }
-    }//.stateIn(viewModelScope,SharingStarted.Lazily, mapOf())
+    }.stateIn(viewModelScope, SharingStarted.Lazily, mapOf())
 }

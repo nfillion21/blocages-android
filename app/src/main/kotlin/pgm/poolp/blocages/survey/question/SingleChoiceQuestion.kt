@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pgm.poolp.blocages.R
 import pgm.poolp.blocages.survey.QuestionWrapper
+import pgm.poolp.blocages.util.roundOffDecimal
 
 @Composable
 fun SingleChoiceQuestion(
@@ -55,14 +56,15 @@ fun SingleChoiceQuestion(
                 var text = stringResource(id = numberOfDice.stringResourceId)
                 text += " - "
                 text += when (index) {
-                    0 -> stateDices["Miss"]
-                    1 -> stateDices["Tackle"]
-                    2 -> stateDices["ShoveOne"]
-                    3 -> stateDices["Tackle"]
-                    4 -> stateDices["Smash"]
-                    5 -> stateDices["Kerrunch"]
-                    else -> {}
+                    0 -> stateDices["Miss"]?.roundOffDecimal()
+                    1 -> stateDices["Tackle"]?.roundOffDecimal()
+                    2 -> stateDices["ShoveOne"]?.roundOffDecimal()
+                    3 -> stateDices["Tackle"]?.roundOffDecimal()
+                    4 -> stateDices["Smash"]?.roundOffDecimal()
+                    5 -> stateDices["Kerrunch"]?.roundOffDecimal()
+                    else -> {0}
                 }
+                text += "%"
 
                 RadioButtonWithImageRow(
                     modifier = Modifier.padding(vertical = 8.dp),

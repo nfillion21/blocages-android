@@ -1,8 +1,6 @@
 package pgm.poolp.blocages.survey
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -40,7 +38,7 @@ fun DiceResultQuestion(
     blocagesViewModel: BlocagesViewModel,
     modifier: Modifier = Modifier,
 ) {
-    val stateDices by blocagesViewModel.dicesFlow.collectAsStateWithLifecycle(initialValue = mapOf())
+    val stateDices by blocagesViewModel.dicesFlow.collectAsStateWithLifecycle()
 
     SingleChoiceQuestion(
         titleResourceId = R.string.pick_a_block_dice_result,
@@ -57,9 +55,6 @@ fun DiceResultQuestion(
         onOptionSelected = onOptionSelected,
         modifier = modifier,
     )
-
-    val secondsPassed by blocagesViewModel.secondsPassed.collectAsState(0)
-    Text(text = secondsPassed.toString())
 }
 
 @Composable
