@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
-import pgm.poolp.blocages.game.utils.Dice
+import pgm.poolp.blocages.util.Dice
 import javax.inject.Inject
 
 @HiltViewModel

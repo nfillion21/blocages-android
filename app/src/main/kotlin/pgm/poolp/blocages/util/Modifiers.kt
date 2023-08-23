@@ -22,3 +22,11 @@ fun Float.roundOffDecimal(): Float? {
     df.roundingMode = RoundingMode.CEILING
     return df.format(this).toFloat()
 }
+enum class Dice (val description: String) {
+    KERRUNCH("Kerrunch!"),
+    SHOVE_1("Shove 1"),
+    SHOVE_2("Shove 2"),
+    TACKLE("Tackle"),
+    SMASH("Smash"),
+    MISS("Miss"),
+}
